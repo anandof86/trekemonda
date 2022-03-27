@@ -15,3 +15,21 @@ export const withdrawCollection = (amount) => {
         })
     }
 }
+
+export const loginUser = (data) => {
+    return(dispatch) =>{
+        dispatch({
+            type: "login",
+            payload : data
+        })
+    }
+}
+
+export const logoutUser = (data) => {
+    return(dispatch) =>{
+        dispatch({
+            type: "logout",
+            payload : data
+        })
+    }
+}
