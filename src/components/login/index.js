@@ -24,6 +24,13 @@ const LoginComponent = () => {
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
     loginUser(currentUser)
+    
+    if(currentUser){
+      localStorage.setItem("isAuthenticated", true);
+    localStorage.setItem("user", currentUser.email);
+      window.location.pathname = "/agent";
+    }
+    
   });
 
   const login = async () => {
@@ -46,7 +53,7 @@ const LoginComponent = () => {
   return (
     <div className="wrapper">
       <div className="form">
-  <h1>Welcome Back</h1>
+  <h1>CNS Admin Login</h1>
   <p>Enter your credentials to continue.</p>
   
   <div className="input-wrapper">
@@ -70,15 +77,7 @@ const LoginComponent = () => {
     </button>
   </div>
 </div>
-      <div>
-       
-
-         <h4> User Logged In: </h4>
-      {user?.email}
-
-      <button onClick={logout}> Sign Out </button>
       </div>
-    </div>
   )
 }
 
